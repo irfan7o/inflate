@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: 'Inter', 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+            'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+            sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background-color: #121212;
+        color: #E0E0E0;
+    }
+
+    code {
+        font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+            monospace;
+    }
+
+    /* Hide number input arrows */
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+
+    /* Hide arrows for text input that contains numbers */
+    input[type="text"]::-webkit-outer-spin-button,
+    input[type="text"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Remove focus outlines from buttons and inputs */
+    button:focus,
+    input:focus,
+    select:focus,
+    textarea:focus {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+    /* Remove default button styling */
+    button {
+        border: none;
+        outline: none;
+    }
+}
+
+@layer components {
+    .card {
+        @apply bg-dark-100 rounded-lg border border-gray-700 p-6 hover:border-primary transition-colors duration-200;
+    }
+
+    .btn-primary {
+        @apply bg-primary hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors duration-200;
+    }
+
+    .btn-secondary {
+        @apply bg-dark-100 hover:bg-gray-700 text-text-primary border border-gray-600 px-4 py-2 rounded-lg transition-colors duration-200;
+    }
+}
