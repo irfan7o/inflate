@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { TrendingUp, Instagram, Linkedin } from 'lucide-react';
+import { Instagram, Linkedin } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -19,27 +20,31 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center">
             {/* Brand Section */}
             <div className="flex items-center space-x-3 mb-6 md:mb-0">
-              <div className="bg-blue-600 p-2 rounded-lg">
-                <TrendingUp className="w-6 h-6 text-white" />
+              <div className="w-10 h-10 flex items-center justify-center">
+                <img 
+                  src="/Logo.svg" 
+                  alt="Inflate Logo" 
+                  className="w-8 h-8"
+                />
               </div>
               <h3 className="text-2xl font-bold text-gray-900">Inflate</h3>
             </div>
 
             {/* Navigation Links */}
             <nav className="flex flex-wrap justify-center md:justify-end items-center space-x-8 mb-6 md:mb-0">
-              <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
+              <Link to="/" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
                 {t('home')}
-              </a>
-              <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
+              </Link>
+              <Link to="/calculator" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
                 {t('calculator')}
-              </a>
+              </Link>
               <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
                 {t('inflationRates')}
               </a>
               <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
                 {t('investment')}
               </a>
-              <a href="#" className="font-medium transition-all duration-200 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 bg-clip-text text-transparent hover:from-blue-700 hover:via-purple-700 hover:to-pink-600">
+              <a href="#" className="font-medium transition-all duration-200 bg-gradient-to-r from-[#0044eb] via-purple-600 to-pink-500 bg-clip-text text-transparent hover:from-[#0033cc] hover:via-purple-700 hover:to-pink-600">
                 {t('askAI')}
               </a>
               <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
@@ -79,7 +84,7 @@ const Footer = () => {
                 href="https://ko-fi.com/funwkwk" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-blue-600 hover:text-blue-800 transition-colors"
+                className="text-[#0044eb] hover:text-[#0033cc] transition-colors"
               >
                 @funwkwk
               </a>

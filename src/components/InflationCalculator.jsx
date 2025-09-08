@@ -150,14 +150,14 @@ const InflationCalculator = ({ countryData }) => {
                 <button
                   type="button"
                   onClick={incrementAmount}
-                  className="px-2 py-1 transition-all duration-200 hover:bg-blue-50 text-gray-500 hover:text-blue-600 flex-1 flex items-center justify-center"
+                  className="px-2 py-1 transition-all duration-200 hover:bg-blue-50 text-gray-500 hover:text-[#0044eb] flex-1 flex items-center justify-center"
                 >
                   <ChevronUp className="w-3 h-3" />
                 </button>
                 <button
                   type="button"
                   onClick={decrementAmount}
-                  className="px-2 py-1 transition-all duration-200 hover:bg-blue-50 text-gray-500 hover:text-blue-600 flex-1 flex items-center justify-center"
+                  className="px-2 py-1 transition-all duration-200 hover:bg-blue-50 text-gray-500 hover:text-[#0044eb] flex-1 flex items-center justify-center"
                 >
                   <ChevronDown className="w-3 h-3" />
                 </button>
@@ -244,10 +244,10 @@ const InflationCalculator = ({ countryData }) => {
                         }}
                         className={`p-3 rounded-lg text-sm font-semibold transition-all duration-200 focus:outline-none focus:ring-0 ${
                           year === startYear 
-                            ? 'bg-blue-600 text-white shadow-lg transform scale-105' 
+                            ? 'bg-[#0044eb] text-white shadow-lg transform scale-105' 
                             : 'bg-gray-50 text-gray-900 border border-gray-200 hover:bg-gray-100 hover:shadow-md hover:transform hover:scale-105'
                         }`}
-                        style={{ outline: 'none', boxShadow: year === startYear ? '0 4px 14px 0 rgba(59, 130, 246, 0.39)' : 'none' }}
+                        style={{ outline: 'none', boxShadow: year === startYear ? '0 4px 14px 0 rgba(0, 68, 235, 0.39)' : 'none' }}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
@@ -337,7 +337,7 @@ const InflationCalculator = ({ countryData }) => {
                         }}
                         className={`p-3 rounded-lg text-sm font-semibold transition-all duration-200 focus:outline-none focus:ring-0 ${
                           year === endYear 
-                            ? 'bg-blue-600 text-white shadow-lg transform scale-105' 
+                            ? 'bg-[#0044eb] text-white shadow-lg transform scale-105' 
                             : year <= startYear
                             ? 'bg-gray-100 text-gray-400 cursor-not-allowed opacity-50'
                             : 'bg-gray-50 text-gray-900 border border-gray-200 hover:bg-gray-100 hover:shadow-md hover:transform hover:scale-105'
@@ -380,7 +380,7 @@ const InflationCalculator = ({ countryData }) => {
           <button
             onClick={calculateInflation}
             disabled={!amount || startYear >= endYear}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2 font-semibold h-12"
+            className="w-full bg-[#0044eb] hover:bg-[#0033cc] text-white px-6 py-3 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2 font-semibold h-12"
           >
             <Calculator className="w-5 h-5" />
             <span>{t('calculate')}</span>
@@ -417,7 +417,7 @@ const InflationCalculator = ({ countryData }) => {
             </div>
             
             <div className="flex items-center justify-center">
-              <ArrowRight className="w-6 h-6 text-blue-600" />
+              <ArrowRight className="w-6 h-6 text-[#0044eb]" />
             </div>
             
             <div className="text-center">
@@ -468,7 +468,7 @@ const InflationCalculator = ({ countryData }) => {
                 border: '1px solid #BFDBFE'
               }}
             >
-              <h4 className="font-bold mb-3 text-blue-600">
+              <h4 className="font-bold mb-3 text-[#0044eb]">
                 What this means:
               </h4>
               <p className="text-sm mb-3 text-gray-700">
