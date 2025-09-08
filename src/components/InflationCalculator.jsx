@@ -3,9 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Calculator, ArrowRight, TrendingUp, ChevronUp, ChevronDown } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Area, AreaChart } from 'recharts';
 import { useTheme } from '../contexts/ThemeContext';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const InflationCalculator = ({ countryData }) => {
   const { colors } = useTheme();
+  const { t } = useLanguage();
   const [amount, setAmount] = useState('100');
   const [startYear, setStartYear] = useState(2000);
   const [endYear, setEndYear] = useState(2025);
@@ -100,35 +102,34 @@ const InflationCalculator = ({ countryData }) => {
   };
 
   return (
-    <motion.div
-      className="rounded-2xl p-8 mt-8"
-      style={{
-        backgroundColor: '#FFFFFF'
-      }}
-      initial={{ y: 20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, delay: 0.5 }}
-    >
-      <div className="flex items-center space-x-3 mb-2">
-        <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#3B82F6' }}>
-          <Calculator className="w-5 h-5 text-white" />
-        </div>
-        <h2 className="text-2xl font-bold text-gray-900">
-          Inflation Calculator
+    <div>
+      {/* Title and Description - Outside Card */}
+      <div className="text-center mb-16">
+        <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          {t('inflationCalculatorTitle')}
         </h2>
+        <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+          {t('inflationCalculatorDescription')}
+        </p>
       </div>
 
-      <p className="mb-8 text-gray-600 text-sm">
-        Calculate how inflation affects the purchasing power of your money over time.
-      </p>
-
+      {/* Calculator Card */}
+      <motion.div
+        className="rounded-2xl p-8"
+        style={{
+          backgroundColor: '#FFFFFF'
+        }}
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
+      >
       <div className="space-y-6 mb-6">
         {/* Input and Button Row */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
           {/* Amount Input */}
           <div>
             <label className="block text-sm font-medium mb-3 text-gray-700">
-              Amount ({countryData.currencySymbol})
+              {t('amount')} ({countryData.currencySymbol})
             </label>
             <div className="flex rounded-lg overflow-hidden h-12" style={{ backgroundColor: '#F9FAFB' }}>
               <input
@@ -177,7 +178,7 @@ const InflationCalculator = ({ countryData }) => {
         {/* Start Year */}
         <div className="relative">
           <label className="block text-sm font-medium mb-3 text-gray-700">
-            Start Year
+            {t('startYear')}
           </label>
           <button
             type="button"
@@ -275,7 +276,7 @@ const InflationCalculator = ({ countryData }) => {
         {/* End Year */}
         <div className="relative">
           <label className="block text-sm font-medium mb-3 text-gray-700">
-            End Year
+            {t('endYear')}
           </label>
           <button
             type="button"
@@ -382,7 +383,7 @@ const InflationCalculator = ({ countryData }) => {
             className="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2 font-semibold h-12"
           >
             <Calculator className="w-5 h-5" />
-            <span>Calculate</span>
+            <span>{t('calculate')}</span>
           </button>
         </div>
 
@@ -408,7 +409,7 @@ const InflationCalculator = ({ countryData }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             <div className="text-center">
               <p className="text-sm mb-2 text-gray-600">
-                Original Amount ({startYear})
+                {t('originalValue')} ({startYear})
               </p>
               <p className="text-2xl font-bold text-gray-900">
                 {formatCurrency(result.originalAmount)}
@@ -421,7 +422,7 @@ const InflationCalculator = ({ countryData }) => {
             
             <div className="text-center">
               <p className="text-sm mb-2 text-gray-600">
-                Equivalent Amount ({endYear})
+                {t('equivalentValue')} ({endYear})
               </p>
               <p className="text-2xl font-bold text-red-600">
                 {formatCurrency(result.inflatedAmount)}
@@ -430,7 +431,7 @@ const InflationCalculator = ({ countryData }) => {
             
             <div className="text-center">
               <p className="text-sm mb-2 text-gray-600">
-                Total Inflation
+                {t('inflationRate')}
               </p>
               <p className="text-2xl font-bold text-red-600">
                 +{result.totalInflation.toFixed(2)}%
@@ -449,7 +450,7 @@ const InflationCalculator = ({ countryData }) => {
               <div className="flex items-center space-x-2 mb-3">
                 <TrendingUp className="w-5 h-5 text-red-600" />
                 <h4 className="font-bold text-red-600">
-                  Purchasing Power Loss
+                  {t('purchasingPowerLoss')}
                 </h4>
               </div>
               <p className="text-3xl font-bold mb-3 text-red-600">
@@ -580,13 +581,13 @@ const InflationCalculator = ({ countryData }) => {
             }}
           >
             <p className="text-sm text-amber-800">
-              <strong>Note:</strong> This calculation is based on historical inflation data. 
-              Actual inflation may vary and this tool is for educational purposes only.
+              <strong>{t('note').split(':')[0]}:</strong> {t('note').split(':')[1]}
             </p>
           </div>
         </motion.div>
       )}
-    </motion.div>
+      </motion.div>
+    </div>
   );
 };
 
